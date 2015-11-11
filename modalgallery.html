@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			.gallery img {
+				max-width: 400px;
+				display: inline-block;
+			}
+
+			#close h2 {
+				line-height: 0;
+			}
+
+			#modal {
+				position: fixed;
+				background-color: #FFF;
+				top: 10vh;
+				left: 25%;
+				display: none;
+				width: 50%;
+				outline-color: rgba(0, 0, 0, 0.5);
+				outline-width: 9999px;
+				outline-style: solid;
+			}
+
+			#modal img {
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="gallery">
+			<img src="p01.jpg"/>
+			<img src="p02.jpg"/>
+			<img src="p03.jpg"/>
+			<img src="p04.jpg"/>
+			<img src="p05.jpg"/>
+			<img src="p06.jpg"/>
+			<img src="p07.jpg"/>
+			<img src="p08.jpg"/>
+		</div>
+		<div id="modal">
+			<div id="close"><h2>X</h2></div>
+			<div id="modal-img"></div>
+		</div>
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script>
+			$(function() {
+				var $imgs = $('img');
+				var $modalImg = $('#modal-img');
+				var $modal = $('#modal');
+				var $close = $('#close');
+
+				$imgs.on('click', function() {
+					href = $(this).attr('src');
+					$modalImg.html('<img src="' + href + '" />')
+					$modal.show();
+				})
+
+				$close.on('click', function() {
+					$modal.hide();
+				})
+			});
+		</script>
+	</body>
+</html>
