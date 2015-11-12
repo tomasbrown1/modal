@@ -9,6 +9,7 @@
 
 			#close h2 {
 				line-height: 0;
+				cursor: pointer;
 			}
 
 			#modal {
@@ -16,11 +17,19 @@
 				background-color: #FFF;
 				top: 10vh;
 				left: 25%;
-				display: none;
-				width: 50%;
 				outline-color: rgba(0, 0, 0, 0.5);
 				outline-width: 9999px;
 				outline-style: solid;
+				width: 0px;
+				transition: all 0.3s ease-in-out;
+				opacity: 0;
+				pointer-events: none;
+			}
+
+			#modal.is-open {
+				opacity: 1;
+				width: 50%;
+				pointer-events: auto;
 			}
 
 			#modal img {
@@ -54,11 +63,11 @@
 				$imgs.on('click', function() {
 					href = $(this).attr('src');
 					$modalImg.html('<img src="' + href + '" />')
-					$modal.show();
+					$modal.addClass('is-open');
 				})
 
 				$close.on('click', function() {
-					$modal.hide();
+					$modal.removeClass();
 				})
 			});
 		</script>
